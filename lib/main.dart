@@ -3,6 +3,7 @@ import 'package:proj_1/pages/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import './pages/hello_rectangle.dart';
+import './util/my_routes.dart';
 
 void main() {
   print('hello world');
@@ -27,8 +28,8 @@ void main() {
       routes: {
         // App main home like root
         "/": (context) => LoginPage(),
-        "/home": (context) => LoginPage(),
-        "/test": (context) => HelloRectangle(),
+        MyRoute.testRoute: (context) => HelloRectangle(),
+        MyRoute.homeRoute: (context) => LoginPage(),
       },
     ),
   );
