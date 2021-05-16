@@ -9,6 +9,7 @@ void main() {
         title: Text('P1'),
       ),
       body: HelloRectangle(),
+      drawer: Drawer(),
     ),
   ));
 }
@@ -16,6 +17,8 @@ void main() {
 class HelloRectangle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    int num = 30;
+
     // TODO: implement build
     return Center(
       child: Container(
@@ -24,7 +27,7 @@ class HelloRectangle extends StatelessWidget {
         width: 300.0,
         child: Center(
           child: Text(
-            'Hello',
+            'Hello ${num}',
             style: TextStyle(fontSize: 40.0),
           ),
         ),
