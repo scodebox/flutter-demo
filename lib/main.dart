@@ -22,7 +22,7 @@ void main() {
       darkTheme: ThemeData(brightness: Brightness.dark),
 
       // At launch
-      initialRoute: '/home',
+      initialRoute: MyRoute.testRoute,
 
       // Route
       routes: {

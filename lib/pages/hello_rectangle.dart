@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../wigets/drawer.dart';
 
 class HelloRectangle extends StatelessWidget {
   @override
@@ -23,7 +24,7 @@ class HelloRectangle extends StatelessWidget {
           ),
         ),
       ),
-      drawer: Drawer(),
+      drawer: MyDrawer(),
     );
   }
 }
