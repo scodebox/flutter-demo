@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proj_1/pages/login_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import './pages/hello_rectangle.dart';
 
@@ -12,7 +13,11 @@ void main() {
 
       // Dark mode
       themeMode: ThemeMode.system,
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        primaryTextTheme: GoogleFonts.latoTextTheme(),
+        fontFamily: GoogleFonts.lato().fontFamily,
+      ),
       darkTheme: ThemeData(brightness: Brightness.dark),
 
       // At launch
