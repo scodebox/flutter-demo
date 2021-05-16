@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:proj_1/util/my_routes.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String name = "";
+  bool tap = false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -24,9 +32,9 @@ class LoginPage extends StatelessWidget {
 
             // Text
             Text(
-              "Login Here",
+              "Welcome $name",
               style: TextStyle(
-                fontSize: 40.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -40,6 +48,13 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 children: [
                   TextFormField(
+                    // on chnage call back
+                    onChanged: (text) {
+                      print(text);
+                      setState(() {
+                        name = text;
+                      });
+                    },
                     decoration: InputDecoration(
                       labelText: "Username",
                       hintText: "Enter Username",
@@ -58,15 +73,48 @@ class LoginPage extends StatelessWidget {
                     height: 20.0,
                   ),
 
-                  // button
-                  ElevatedButton(
-                    onPressed: () {
-                      print('login pressed');
+                  // Animated button now.
+                  InkWell(
+                    onTap: () async {
+                      setState(() {
+                        tap = true;
+                      });
+                      await Future.delayed(Duration(seconds: 1));
                       Navigator.pushNamed(context, MyRoute.testRoute);
                     },
-                    child: Text('Login'),
-                    style: TextButton.styleFrom(minimumSize: Size(100.0, 40.0)),
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      width: tap ? 45 : 100.0,
+                      height: 45.0,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        shape: tap ? BoxShape.circle : BoxShape.rectangle,
+                        // borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: tap
+                          ? Icon(
+                              Icons.done,
+                              color: Colors.white,
+                            )
+                          : Text(
+                              'Login',
+                              style: TextStyle(
+                                  fontSize: 17.0, color: Colors.white),
+                            ),
+                    ),
                   ),
+
+                  // button
+
+                  // ElevatedButton(
+                  //   onPressed: () {
+                  //     print('login pressed');
+                  //     Navigator.pushNamed(context, MyRoute.testRoute);
+                  //   },
+                  //   child: Text('Login'),
+                  //   style: TextButton.styleFrom(minimumSize: Size(100.0, 40.0)),
+                  // ),
                 ],
               ),
             )
