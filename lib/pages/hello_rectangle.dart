@@ -6,18 +6,24 @@ class HelloRectangle extends StatelessWidget {
     int num = 30;
 
     // TODO: implement build
-    return Center(
-      child: Container(
-        color: Colors.greenAccent,
-        height: 400.0,
-        width: 300.0,
-        child: Center(
-          child: Text(
-            'Hello ${num}',
-            style: TextStyle(fontSize: 40.0),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('P1'),
+      ),
+      body: Center(
+        child: Container(
+          color: Colors.greenAccent,
+          height: 400.0,
+          width: 300.0,
+          child: Center(
+            child: Text(
+              'Hello ${num}',
+              style: TextStyle(fontSize: 40.0),
+            ),
           ),
         ),
       ),
+      drawer: Drawer(),
     );
   }
 }
