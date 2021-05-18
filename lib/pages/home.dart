@@ -22,16 +22,24 @@ class _HomeState extends State<Home> {
 
   // may take time
   loadData() async {
+    await Future.delayed(Duration(seconds: 2));
+
     final catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");
     final decodedData = jsonDecode(catalogJson);
-    print(decodedData["products"]);
+    // print(decodedData["products"]);
+
+    CatalogModels.items = List.from(decodedData["products"])
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
+
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     // Test
-    final dummyList = List.generate(50, (index) => CatalogModels.items[0]);
+    // final dummyList = List.generate(50, (index) => CatalogModels.items[0]);
 
     return Scaffold(
       appBar: AppBar(
@@ -46,18 +54,22 @@ class _HomeState extends State<Home> {
       // like recyclerview
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
-          // itemCount: CatalogModels.items.length,
+        child: (CatalogModels.items != null && CatalogModels.items.isNotEmpty)
+            ? ListView.builder(
+                itemCount: CatalogModels.items.length,
 
-          // Test
-          itemCount: dummyList.length,
-          itemBuilder: (context, index) {
-            // return ItemWidgets(item: CatalogModels.items[index]);
+                // Test
+                // itemCount: dummyList.length,
+                itemBuilder: (context, index) {
+                  return ItemWidgets(item: CatalogModels.items[index]);
 
-            // Test
-            return ItemWidgets(item: dummyList[index]);
-          },
-        ),
+                  // Test
+                  // return ItemWidgets(item: dummyList[index]);
+                },
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
 
       // Side drawer
