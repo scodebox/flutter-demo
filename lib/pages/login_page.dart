@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
         tap = true;
       });
       await Future.delayed(Duration(seconds: 1));
-      await Navigator.pushNamed(context, MyRoute.testRoute);
+      await Navigator.pushNamed(context, MyRoute.homeRoute);
       setState(() {
         tap = false;
       });

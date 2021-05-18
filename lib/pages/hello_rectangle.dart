@@ -9,7 +9,9 @@ class HelloRectangle extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('P1'),
+        title: Text('App Bar'),
+        // backgroundColor: Colors.white,
+        // elevation: 0.0,
       ),
       body: Center(
         child: Container(
