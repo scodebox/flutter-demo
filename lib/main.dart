@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proj_1/pages/login_page.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:proj_1/wigets/themes.dart';
 
 import './pages/hello_rectangle.dart';
 import './pages/home.dart';
@@ -17,19 +17,8 @@ void main() {
       themeMode: ThemeMode.system,
 
       // Theme
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryTextTheme: GoogleFonts.latoTextTheme(),
-        fontFamily: GoogleFonts.lato().fontFamily,
-
-        // app bar theme
-        appBarTheme: AppBarTheme(
-          iconTheme: IconThemeData(
-            color: Colors.black,
-          ),
-        ),
-      ),
-      darkTheme: ThemeData(brightness: Brightness.dark),
+      theme: MyTheme.lightTheme(),
+      darkTheme: MyTheme.darkTheme(),
 
       // At launch
       initialRoute: MyRoute.homeRoute,
