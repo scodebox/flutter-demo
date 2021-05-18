@@ -17,8 +17,10 @@ class MyTheme {
       );
 
   static ThemeData darkTheme() => ThemeData(
+        primarySwatch: Colors.grey,
+        primaryTextTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
         brightness: Brightness.dark,
-        primaryTextTheme: GoogleFonts.latoTextTheme(),
+        // primaryTextTheme: GoogleFonts.latoTextTheme(),
         fontFamily: GoogleFonts.lato().fontFamily,
         appBarTheme: AppBarTheme(
           elevation: 0.0,
