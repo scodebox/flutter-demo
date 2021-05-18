@@ -26,7 +26,6 @@ class HelloRectangle extends StatelessWidget {
           ),
         ),
       ),
-      drawer: MyDrawer(),
     );
   }
 }

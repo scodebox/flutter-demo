@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
         title: Text("Home"),
       ),
       body: Container(
-        child: Text('Hello world!'),
+        child: Center(child: Text('Hello world!')),
       ),
       drawer: MyDrawer(),
     );
