@@ -13,6 +13,9 @@ class HomeDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       bottomNavigationBar: Container(
         color: Colors.white,
         child: ButtonBar(
@@ -33,7 +36,6 @@ class HomeDetails extends StatelessWidget {
           ],
         ).p32(),
       ),
-      appBar: AppBar(),
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -58,6 +60,11 @@ class HomeDetails extends StatelessWidget {
                     catalog.desc.text.xl.make(),
                     // space
                     10.heightBox,
+                    "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                        .text
+                        .textStyle(context.captionStyle)
+                        .make()
+                        .p16(),
                   ],
                 ).py64(),
               ),
