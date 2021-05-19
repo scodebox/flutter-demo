@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:proj_1/models/catalog.dart';
+import 'package:proj_1/util/my_routes.dart';
 import 'package:proj_1/wigets/home_widgets/catalog_header.dart';
 import 'package:proj_1/wigets/home_widgets/catalog_list.dart';
 import 'package:proj_1/wigets/themes.dart';
@@ -46,6 +47,11 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: MyTheme.creamColor,
       // Leave status bar.
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, MyRoute.cartRoute),
+        child: Icon(Icons.shopping_cart_outlined),
+        backgroundColor: MyTheme.darkBlueish,
+      ),
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(16.0),

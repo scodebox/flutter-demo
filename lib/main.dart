@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj_1/pages/cart.dart';
 import 'package:proj_1/pages/login_page.dart';
 import 'package:proj_1/wigets/themes.dart';
 
@@ -29,6 +30,7 @@ void main() {
         "/": (context) => LoginPage(),
         MyRoute.loginRoute: (context) => LoginPage(),
         MyRoute.homeRoute: (context) => Home(),
+        MyRoute.cartRoute: (context) => Cart(),
         MyRoute.testRoute: (context) => HelloRectangle(),
       },
     ),

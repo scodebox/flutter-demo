@@ -25,14 +25,14 @@ class HomeDetails extends StatelessWidget {
             "\$${catalog.price}".text.bold.xl4.red600.make(),
             ElevatedButton(
               onPressed: () {},
-              child: "Buy".text.make(),
+              child: "Add to cart".text.make(),
               style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all(MyTheme.darkBlueish),
                   shape: MaterialStateProperty.all(
                     StadiumBorder(),
                   )),
-            ).wh(100, 40),
+            ).wh(120, 40),
           ],
         ).p32(),
       ),
