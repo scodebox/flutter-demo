@@ -55,17 +55,44 @@ class _HomeState extends State<Home> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: (CatalogModels.items != null && CatalogModels.items.isNotEmpty)
-            ? ListView.builder(
-                itemCount: CatalogModels.items.length,
-
-                // Test
-                // itemCount: dummyList.length,
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  // Item in each row
+                  crossAxisCount: 2,
+                  // Item spacing vartical
+                  mainAxisSpacing: 5,
+                  // Item spacing horizontal
+                  crossAxisSpacing: 5,
+                ),
                 itemBuilder: (context, index) {
-                  return ItemWidgets(item: CatalogModels.items[index]);
-
-                  // Test
-                  // return ItemWidgets(item: dummyList[index]);
+                  final item = CatalogModels.items[index];
+                  return Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GridTile(
+                          header: Container(
+                            child: Text(
+                              item.name,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            padding: EdgeInsets.all(5.0),
+                            decoration: BoxDecoration(color: Colors.blue),
+                          ),
+                          child: Image.network(item.image),
+                          footer: Container(
+                            child: Text(
+                              item.price.toString(),
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            decoration: BoxDecoration(color: Colors.black),
+                          ),
+                        ),
+                      ));
                 },
+                itemCount: CatalogModels.items.length,
               )
             : Center(
                 child: CircularProgressIndicator(),
