@@ -8,7 +8,7 @@ class MyTheme {
         primaryTextTheme: GoogleFonts.latoTextTheme(),
         fontFamily: GoogleFonts.lato().fontFamily,
         cardColor: Colors.white,
-        canvasColor: lightBlueish,
+        canvasColor: Colors.white,
         buttonColor: darkBlueish,
         accentColor: darkBlueish,
 
