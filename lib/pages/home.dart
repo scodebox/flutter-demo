@@ -45,12 +45,17 @@ class _HomeState extends State<Home> {
     // final dummyList = List.generate(50, (index) => CatalogModels.items[0]);
 
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.cardColor,
+      // // Without velocity
+      // backgroundColor: Theme.of(context).cardColor,
       // Leave status bar.
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, MyRoute.cartRoute),
-        child: Icon(Icons.shopping_cart_outlined),
-        backgroundColor: MyTheme.darkBlueish,
+        child: Icon(
+          Icons.shopping_cart_outlined,
+          color: Colors.white,
+        ),
+        backgroundColor: context.theme.buttonColor,
       ),
       body: SafeArea(
         child: Container(

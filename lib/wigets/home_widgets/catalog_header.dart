@@ -9,8 +9,8 @@ class ProductHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        "Home".text.xl5.bold.color(MyTheme.darkBlueish).make(),
-        "New products".text.xl2.make(),
+        "Home".text.xl5.bold.color(context.theme.accentColor).make(),
+        "New products".text.xl2.color(context.theme.accentColor).make(),
       ],
     );
   }

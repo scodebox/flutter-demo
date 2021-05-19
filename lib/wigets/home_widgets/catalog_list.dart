@@ -52,7 +52,7 @@ class CatalogItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                catalog.name.text.lg.bold.color(MyTheme.darkBlueish).make(),
+                catalog.name.text.lg.bold.color(context.accentColor).make(),
                 catalog.desc.text.make(),
                 // space
                 10.heightBox,
@@ -80,6 +80,6 @@ class CatalogItem extends StatelessWidget {
           )
         ],
       ),
-    ).white.rounded.square(150).make().py16();
+    ).color(context.cardColor).rounded.square(150).make().py16();
   }
 }
