@@ -26,4 +26,8 @@ class MyTheme {
           elevation: 0.0,
         ),
       );
+
+  // Colors
+  static Color creamColor = Color(0xfff5f5f5);
+  static Color darkBlueish = Color(0xff403b58);
 }

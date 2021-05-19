@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:proj_1/models/catalog.dart';
-import 'package:proj_1/wigets/item_widget.dart';
-import '../wigets/drawer.dart';
+import 'package:proj_1/wigets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -42,65 +42,122 @@ class _HomeState extends State<Home> {
     // final dummyList = List.generate(50, (index) => CatalogModels.items[0]);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Home"),
-        // custom
-
-        // backgroundColor: Colors.white,
-        // elevation: 0.0,
-        // iconTheme: IconThemeData(color: Colors.black),
+      backgroundColor: MyTheme.creamColor,
+      // Leave status bar.
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ProductHeader(),
+              if (CatalogModels.items != null && CatalogModels.items.isNotEmpty)
+                CatalogList().expand()
+              else
+                Center(
+                  child: CircularProgressIndicator(),
+                )
+            ],
+          ),
+        ),
       ),
-
-      // like recyclerview
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: (CatalogModels.items != null && CatalogModels.items.isNotEmpty)
-            ? GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  // Item in each row
-                  crossAxisCount: 2,
-                  // Item spacing vartical
-                  mainAxisSpacing: 5,
-                  // Item spacing horizontal
-                  crossAxisSpacing: 5,
-                ),
-                itemBuilder: (context, index) {
-                  final item = CatalogModels.items[index];
-                  return Card(
-                      clipBehavior: Clip.antiAlias,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GridTile(
-                          header: Container(
-                            child: Text(
-                              item.name,
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            padding: EdgeInsets.all(5.0),
-                            decoration: BoxDecoration(color: Colors.blue),
-                          ),
-                          child: Image.network(item.image),
-                          footer: Container(
-                            child: Text(
-                              item.price.toString(),
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            decoration: BoxDecoration(color: Colors.black),
-                          ),
-                        ),
-                      ));
-                },
-                itemCount: CatalogModels.items.length,
-              )
-            : Center(
-                child: CircularProgressIndicator(),
-              ),
-      ),
-
-      // Side drawer
-      drawer: MyDrawer(),
     );
+  }
+}
+
+class ProductHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        "Home".text.xl5.bold.color(MyTheme.darkBlueish).make(),
+        "New products".text.xl2.make(),
+      ],
+    );
+  }
+}
+
+class CatalogList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: CatalogModels.items.length,
+      itemBuilder: (context, index) {
+        final catalog = CatalogModels.items[index];
+        return CatalogItem(catalog: catalog);
+      },
+    );
+  }
+}
+
+class CatalogItem extends StatelessWidget {
+  final Item catalog;
+
+  const CatalogItem({Key key, @required this.catalog})
+      : assert(catalog != null),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return VxBox(
+      child: Row(
+        children: [
+          CatalogImage(image: catalog.image),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                catalog.name.text.lg.bold.color(MyTheme.darkBlueish).make(),
+                catalog.desc.text.make(),
+                // space
+                10.heightBox,
+
+                // buttons
+                ButtonBar(
+                  alignment: MainAxisAlignment.spaceBetween,
+                  buttonPadding: EdgeInsets.zero,
+                  children: [
+                    "\$${catalog.price}".text.bold.xl.make(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: "Buy".text.make(),
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(MyTheme.darkBlueish),
+                          shape: MaterialStateProperty.all(
+                            StadiumBorder(),
+                          )),
+                    ),
+                  ],
+                ).pOnly(right: 10.0)
+              ],
+            ),
+          )
+        ],
+      ),
+    ).white.rounded.square(150).make().py16();
+  }
+}
+
+class CatalogImage extends StatelessWidget {
+  final String image;
+
+  const CatalogImage({Key key, @required this.image})
+      : assert(image != null),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.network(image)
+        .box
+        .p8
+        .rounded
+        .color(MyTheme.creamColor)
+        .make()
+        .p16()
+        .w40(context);
   }
 }
