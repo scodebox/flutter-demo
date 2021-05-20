@@ -5,7 +5,7 @@ import 'package:proj_1/models/catalog.dart';
 import 'package:proj_1/util/my_routes.dart';
 import 'package:proj_1/wigets/home_widgets/catalog_header.dart';
 import 'package:proj_1/wigets/home_widgets/catalog_list.dart';
-import 'package:proj_1/wigets/themes.dart';
+import 'package:http/http.dart' as http;
 import 'package:velocity_x/velocity_x.dart';
 
 class Home extends StatefulWidget {
@@ -36,6 +36,12 @@ class _HomeState extends State<Home> {
         .map<Item>((item) => Item.fromMap(item))
         .toList();
 
+    // HTTP API
+    final URL = "https://jsonplaceholder.typicode.com/posts";
+    var response = await http.get(Uri.parse(URL));
+    print(response.body);
+
+    // state update
     setState(() {});
   }
 
