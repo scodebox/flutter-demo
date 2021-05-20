@@ -1,6 +1,6 @@
 import 'package:proj_1/models/catalog.dart';
 
-class CardModel {
+class CartModel {
   // catalog fields
   CatalogModels _catalog;
   // Collection of IDs  - store IDs of each item
@@ -19,6 +19,7 @@ class CardModel {
   List<Item> get items => _itemIds.map((id) => _catalog.getById(id)).toList();
 
   // get total price
+
   num get totalPrice =>
       items.fold(0, (total, currentItem) => total + currentItem.price);
 

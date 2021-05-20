@@ -56,6 +56,10 @@ class _HomeState extends State<Home> {
           color: Colors.white,
         ),
         backgroundColor: context.theme.buttonColor,
+      ).badge(
+        color: Vx.red500,
+        size: 20,
+        count: 3,
       ),
       body: SafeArea(
         child: Container(
