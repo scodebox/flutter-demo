@@ -31,7 +31,10 @@ class CardTotal extends StatelessWidget {
         children: [
           "\$${9999}".text.xl5.color(context.accentColor).make(),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: "Under Construction".text.make()));
+            },
             child: "Buy".text.white.make(),
           ).w24(context)
         ],
